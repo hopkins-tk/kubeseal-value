@@ -33,7 +33,7 @@ metadata:
 kind: Secret
 type: Opaque
 data:
-  value: $(echo "$value" | base64)
+  value: $( echo -n "$value" | base64 )
 EOF
 else
     kubeseal $params
