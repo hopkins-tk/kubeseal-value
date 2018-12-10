@@ -11,7 +11,7 @@ while [ $# -gt 0 ]; do
       name="$2"
       shift
       ;;
-    -n*)
+    --namespace*|-n*)
       namespace="$2"
       params+="$1 $2"
       shift
