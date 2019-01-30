@@ -13,11 +13,12 @@ while [ $# -gt 0 ]; do
       ;;
     --namespace*|-n*)
       namespace="$2"
-      params+="$1 $2"
+      direct_params+="$1 $2"
       shift
       ;;
     *)
       params+="$1 "
+      direct_params+="$1"
       ;;
   esac
   shift
@@ -36,5 +37,5 @@ data:
   value: $( echo -n "$value" | base64 )
 EOF
 else
-    kubeseal $params
+    kubeseal $direct_params
 fi
