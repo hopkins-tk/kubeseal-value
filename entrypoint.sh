@@ -7,6 +7,10 @@ while [ $# -gt 0 ]; do
       value="$2"
       shift
       ;;
+    --type*)
+      type="$2"
+      shift
+      ;;
     --secret-name*)
       name="$2"
       shift
@@ -32,7 +36,7 @@ metadata:
   name: "$name"
   namespace: "${namespace:-default}"
 kind: Secret
-type: Opaque
+type: "${type:-Opaque}"
 data:
   value: $( echo -n "$value" | base64 )
 EOF
